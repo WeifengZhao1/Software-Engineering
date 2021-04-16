@@ -1,0 +1,56 @@
+# File
+  Size:
+        Empty.                  [single] [property emptyfile]
+        Not Empty.
+
+  Number Of the occurencences of the string in the file:
+        None.                   [single] [if !emptyfile] [property noOccurences]
+        One.                    [single] [if !emptyfile]
+        Many.                   [if !emptyfile]
+
+  Number of occurences in one line:
+        One.                    [if !emptyfile && !noOccurences]
+        Many.                   [if !emptyfile && !noOccurences]
+
+  Position of the string in the file:
+        First line.             [if !emptyfile && !noOccurences]
+        Last line.              [if !emptyfile && !noOccurences]
+        Any line.               [if !emptyfile && !noOccurences]
+
+# OPT
+  number of command line arguments and options:
+        Zero.                   [single][property emptyOPT]
+        More than one.          [property !emptyOPT]
+
+       -b.                      [property Backup]
+       -f.                      [property ReplaceFrom]
+       -l.                      [property ReplaceTo]
+       -i.                      [property Insensitive]   
+
+# Replace
+  Replace to:
+    Backup.                     [if !emptyOPT && Backup]
+    ReplaceFrom.                [if !emptyOPT && ReplaceFrom]
+    ReplaceTo.                  [if !emptyOPT && ReplaceTo]
+    Insensitive.                [if !emptyOPT && Insensitive]  
+
+
+# ToString
+  length of string:
+        Zero.                   [single][emptyfile]
+        One or More.            [if !emptyfile] 
+     
+# File
+
+  File Size:
+    0.                          [error]
+    >1.
+
+  File Name:
+    Not present.                [error]
+    Present.                    [property !emptyfile]
+  
+  Number of Files:
+    0.                          [error]
+    1.                          [if !emptyfile]
+    >1.                         [if !emptyfile]
